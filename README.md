@@ -4,7 +4,7 @@
 
 <img src="doc/img/logo.png" alt="logo_samuelflm">
 
-> Um sistema/bot que vai melhorar sua facilidade para realizar qualquer download do youtube.<br>
+> Um sistema/bot que vai melhorar sua facilidade para realizar qualquer consulta referente a conversao de moedas.<br>
 > Projeto foi pensando e desenvolvido com o proposito de praticar e aplicar conceitos tecnicos de programacao.<br> Sem Fins lucrativos ou algo para prejudicar a marca.
 
 
