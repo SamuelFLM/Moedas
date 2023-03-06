@@ -1,6 +1,4 @@
 import PySimpleGUI as sg
-import requests
-import re
 
 def page_conversor():
     sg.theme_background_color("white")
@@ -140,45 +138,7 @@ def page_conversor():
     ]                
     
     layout = [cabecalho, valor_equivalente,pais_equivalente, pais_equivalecia, resultado, variacao, porcentagem_variacao]
-    window = sg.Window("Conversor", layout=layout, margins=(0,0), element_justification='c', size=(310,556))
-    
-    while True:
-        event, values = window.read(timeout=10)
-        
-        if event == sg.WIN_CLOSED:
-            break
-        
-        pais_1 = str(values["equivalente"][:3])
-        pais_2 = str(values["equivalecia"][:3])
-        
-        if bool(values["valor"]):
-            valor_moeda = str(values["valor"])
-            validacao = re.search(r'^[0-9]+$', valor_moeda)
-            if validacao:
-                if bool(values["equivalente"]) and bool(values["equivalecia"]):
-                    try:
-                        requisicao = requests.get(f"http://economia.awesomeapi.com.br/json/last/{pais_1}-{pais_2}")
-                        valores = requisicao.json()
-                        pais = pais_1 + pais_2
-                        valor_cotacao = ""
-                        valor_variacao = valores[pais]["varBid"]
-                        valor_porc_variacao = valores[pais]["pctChange"]
-                        window["valor_moeda"].update("img\Valor Moeda.png")
-                        window["resultado"].update(f"{valor_moeda} {pais_1} igual a {valor_cotacao} {pais_2}")
-                        window["variacao"].update(f"{valor_variacao}")
-                        window["porcentagem_var"].update(f"{valor_porc_variacao}")
-                    except KeyError as erro:
-                        print(erro)
-            else:
-                    window["valor_moeda"].update("img\Erro.png")
-                    window["resultado"].update("")
-                    window["variacao"].update("")
-                    window["porcentagem_var"].update("")
-        
-        if bool(values["valor"]) == False:            
-                window["valor_moeda"].update("img\Valor Moeda.png")
-                window["resultado"].update("")
-                window["variacao"].update("")
-                window["porcentagem_var"].update("")
+    window = sg.Window("Conversor", layout=layout, margins=(0,0), element_justification='c', size=(310,556), icon="img\money-management-_2_.ico")
+    return window
+
             
-page_conversor()
