@@ -15,7 +15,7 @@
 
 ### Como baixar o sistema.
 
-> Pode baixar utilizando git clone ou download via zip... 
+> Pode baixar utilizando git clone ou download via zip....
 
 <img src="doc/img/baixar.png" alt="logo_samuelflm">
 
